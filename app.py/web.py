@@ -1,13 +1,15 @@
 import os
 import pickle
-import streamlit as st
-from streamlit_option_menu import option_menu
+import streamlit as st # type: ignore
+from streamlit_option_menu import option_menu # type: ignore
+
 st.set_page_config(page_title='DISEASE OUTBREAK PREDICTION SYSTEM', 
-                   layout='wide', 
-                   page_icon="💉🧪🧫" )
-diabetes_model = pickle.load(open(r"C:\Users\vidhy\OneDrive\Documents\disease outbreak\training_model\diabetes_model.sav",'rb'))
-heart_model = pickle.load(open(r"C:\Users\vidhy\OneDrive\Documents\disease outbreak\training_model\heart_model.sav",'rb'))
-parkinsons_model = pickle.load(open(r"C:\Users\vidhy\OneDrive\Documents\disease outbreak\training_model\parkinsons_model.sav",'rb'))
+                    layout='wide', 
+                    page_icon="💉🧪🧫")
+
+diabetes_model = pickle.load(open(os.path.join("models", "diabetes_model.sav"), 'rb'))
+heart_model = pickle.load(open(os.path.join("models", "heart_model.sav"), 'rb'))
+parkinsons_model = pickle.load(open(os.path.join("models", "parkinsons_model.sav"), 'rb'))
 
 with st.sidebar:
     selected = option_menu('Prediction of Disease Outbreak System',['Diabetes Prediction','Heart Disease Prediction','Parkinsons Prediction'],
